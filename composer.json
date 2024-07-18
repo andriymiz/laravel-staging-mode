@@ -1,0 +1,42 @@
+{
+    "name": "andriymiz/laravel-staging-mode",
+    "description": "Staging mode for Laravel project",
+    "keywords": [
+        "laravel",
+        "staging-mode"
+    ],
+    "homepage": "https://github.com/andriymiz/laravel-staging-mode",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Andriy Miz",
+            "email": "andriy.miz.v@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=7.4.0",
+        "illuminate/contracts": "^5.6||^5.7||^5.8||^6.0||^7.0||^8.0||^9.0||^10.0||^11.0"
+    },
+    "require-dev": {
+        "laravel/pint": "^1.14",
+        "nunomaduro/collision": "^8.1.1||^7.10.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "StagingMode\\": "src/"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "StagingMode\\StagingModeServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
