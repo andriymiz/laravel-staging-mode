@@ -3,6 +3,7 @@
 namespace StagingMode\Http;
 
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Config;
 use Symfony\Component\HttpFoundation\Cookie;
 
 class StagingModeBypassCookie
@@ -12,14 +13,14 @@ class StagingModeBypassCookie
      */
     public static function create(string $key): Cookie
     {
-        $cookieName = config('staging-mode.cookie_name');
-        $cookieExpiration = config('staging-mode.cookie_expiration');
+        $cookieName = Config::get('staging-mode.cookie_name');
+        $cookieExpiration = Config::get('staging-mode.cookie_expiration');
         $expiresAt = Carbon::now()->addHours($cookieExpiration);
 
         return new Cookie($cookieName, base64_encode(json_encode([
             'expires_at' => $expiresAt->getTimestamp(),
             'mac' => hash_hmac('sha256', $expiresAt->getTimestamp(), $key),
-        ])), $expiresAt, config('session.path'), config('session.domain'));
+        ])), $expiresAt, Config::get('session.path'), Config::get('session.domain'));
     }
 
     /**

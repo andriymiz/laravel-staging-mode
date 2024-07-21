@@ -6,6 +6,7 @@ use Closure;
 use StagingMode\Http\StagingModeBypassCookie;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Config;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class PreventRequestsDuringStaging
@@ -23,7 +24,7 @@ class PreventRequestsDuringStaging
             return $next($request);
         }
 
-        $stagingSecret = config('staging-mode.secret');
+        $stagingSecret = Config::get('staging-mode.secret');
         if ($stagingSecret) {
             if (isset($stagingSecret) && $request->path() === $stagingSecret) {
                 return $this->bypassResponse($stagingSecret);
@@ -44,7 +45,7 @@ class PreventRequestsDuringStaging
      */
     protected function hasValidBypassCookie(Request $request, string $secret): bool
     {
-        $cookieName = config('staging-mode.cookie_name');
+        $cookieName = Config::get('staging-mode.cookie_name');
 
         return isset($secret) &&
                 $request->cookie($cookieName) &&
@@ -59,7 +60,7 @@ class PreventRequestsDuringStaging
      */
     protected function inExceptArray(Request $request): bool
     {
-        foreach (config('staging-mode.except') as $except) {
+        foreach (Config::get('staging-mode.except') as $except) {
             if ($except !== '/') {
                 $except = trim($except, '/');
             }
