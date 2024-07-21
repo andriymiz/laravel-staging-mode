@@ -3,6 +3,7 @@
 namespace StagingMode;
 
 use Illuminate\Support\ServiceProvider;
+use StagingMode\Console\Commands\StagingEnableCommand;
 
 class StagingModeServiceProvider extends ServiceProvider
 {
@@ -16,6 +17,10 @@ class StagingModeServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/../config/staging-mode.php' => $this->app->configPath('staging-mode.php'),
         ], 'staging-mode-config');
+
+        if ($this->app->runningInConsole()) {
+            $this->commands([StagingEnableCommand::class]);
+        }
     }
 
     /**

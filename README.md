@@ -15,7 +15,7 @@ composer require andriymiz/laravel-staging-mode
 
 You can publish the config file with:
 ```bash
-php artisan vendor:publish --tag="laravel-staging-mode-config"
+php artisan vendor:publish --tag="staging-mode-config"
 ```
 
 Add middleware in `app/Http/Kernel.php`:
@@ -28,7 +28,12 @@ protected $middleware = [
 
 ## Usage
 
-Add the `STAGING_MODE_SECRET` environment variable to your `.env` file:
+Run the following command to enable the staging mode:
+```bash
+php artisan staging:enable
+```
+
+This command will add the `STAGING_MODE_SECRET` environment variable to your `.env` file:
 ```bash
 STAGING_MODE_SECRET=your-secret
 ```
