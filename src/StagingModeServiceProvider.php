@@ -14,8 +14,8 @@ class StagingModeServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__.'/../config/staging-mode.php' => config_path('staging-mode.php'),
-        ], 'config');
+            __DIR__.'/../config/staging-mode.php' => $this->app->configPath('staging-mode.php'),
+        ], 'staging-mode-config');
     }
 
     /**
