@@ -1,7 +1,7 @@
 # Staging mode for Laravel
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/andriymiz/staging-mode.svg?style=flat-square)](https://packagist.org/packages/andriymiz/staging-mode)
-[![Total Downloads](https://img.shields.io/packagist/dt/andriymiz/staging-mode.svg?style=flat-square)](https://packagist.org/packages/andriymiz/staging-mode)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/andriymiz/laravel-staging-mode.svg?style=flat-square)](https://packagist.org/packages/andriymiz/laravel-staging-mode)
+[![Total Downloads](https://img.shields.io/packagist/dt/andriymiz/laravel-staging-mode.svg?style=flat-square)](https://packagist.org/packages/andriymiz/laravel-staging-mode)
 
 This package allows you to enable a "staging mode" for your Laravel application. This mode is similar to [maintenance mode](https://laravel.com/docs/10.x/configuration#maintenance-mode), but without blocking scheduled tasks and queues.
 
